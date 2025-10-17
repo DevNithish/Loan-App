@@ -1,33 +1,29 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom'; // Import Link and NavLink
+import { Link, NavLink } from 'react-router-dom';
 import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
   // Add a 'path' property to each nav item
   const navItems = [
-    { name: 'Dashboard', icon: '🏠', path: '/dashboard' },
-    { name: 'Loan Applications', icon: '📝', path: '/loan-applications' },
-    { name: 'Customers', icon: '👥', path: '/customers' },
-    { name: 'Repayments', icon: '💰', path: '/repayments' },
-    { name: 'Disbursements', icon: '💸', path: '/disbursements' },
-    { name: 'Roles & Permissions', icon: '🔐', path: '/roles' }, // Example path
-    { name: 'Reports & Analytics', icon: '📊', path: '/reports' },
-    { name: 'Workflow & Automation', icon: '⚙️', path: '/workflow' },
+    { name: 'Dashboard', icon: '🏠', path: '/dashboard' }, // cite: 1
+    { name: 'Loan Applications', icon: '📝', path: '/loan-applications' }, // cite: 2
+    { name: 'Customers', icon: '👥', path: '/customers' }, // cite: 3
+    { name: 'Repayments', icon: '💰', path: '/repayments' }, // cite: 4
+    { name: 'Disbursements', icon: '💸', path: '/disbursements' }, // cite: 5
+    { name: 'Roles & Permissions', icon: '🔐', path: '/roles' }, // cite: 6
+    { name: 'Reports & Analytics', icon: '📊', path: '/reports' }, // cite: 7
+    { name: 'Workflow & Automation', icon: '⚙️', path: '/workflow' }, // cite: 8
+    { name: 'Settings/Notifications', icon: '🔔', path: '/settings' }, // cite: 9
   ];
 
   return (
     <nav className={styles.sidebar}>
       <div className={styles.logo}>
-        {/* Make the logo a link to the dashboard */}
         <Link to="/" className={styles.logoLink}>LMS</Link>
       </div>
       <ul className={styles.navList}>
         {navItems.map((item) => (
           <li key={item.name} className={styles.navItem}>
-            {/* Use NavLink instead of <a>
-              It's like <Link> but adds an 'active' class automatically 
-              when the link matches the current URL.
-            */}
             <NavLink
               to={item.path}
               className={({ isActive }) =>

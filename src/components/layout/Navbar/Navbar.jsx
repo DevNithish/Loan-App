@@ -18,7 +18,7 @@ const Navbar = () => {
         </button>
         <div className={styles.profile}>
           <img
-            src="https://i.pravatar.cc/40" // Placeholder avatar
+            src="https://i.pravatar.cc/40" 
             alt="User Avatar"
             className={styles.avatar}
           />

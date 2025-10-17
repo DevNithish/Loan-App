@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/layout/Sidebar/Sidebar';
 import Navbar from './components/layout/Navbar/Navbar';
 import DashboardPage from './features/dashboard/DashboardPage';
 import LoanApplicationsPage from './features/loanApplications/LoanApplicationsPage';
-import './App.css'; // Styles for the main layout
+// import SettingsPage from './features/settings/SettingsPage';
+import './App.css';
 
 // A placeholder component for pages you haven't built yet
 const PlaceholderPage = ({ title }) => (
@@ -23,16 +24,19 @@ function App() {
           <Navbar />
           <main className="page-content">
             <Routes>
-              {/* Default route to the Dashboard */}
-              <Route path="/" element={<DashboardPage />} />
+              {/* Redirect default route to the Dashboard */}
+              <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/loan-applications" element={<LoanApplicationsPage />} />
+              {/* <Route path="/settings" element={<SettingsPage />} /> */}
               
               {/* Placeholder routes for other features */}
               <Route path="/customers" element={<PlaceholderPage title="Customers" />} />
               <Route path="/repayments" element={<PlaceholderPage title="Repayments" />} />
+              <Route path="/disbursements" element={<PlaceholderPage title="Disbursements" />} />
+              <Route path="/roles" element={<PlaceholderPage title="Roles & Permissions" />} />
               <Route path="/reports" element={<PlaceholderPage title="Reports & Analytics" />} />
-              <Route path="/settings" element={<PlaceholderPage title="Settings" />} />
+              <Route path="/workflow" element={<PlaceholderPage title="Workflow & Automation" />} />
 
               {/* A catch-all route for non-existent pages */}
               <Route path="*" element={<PlaceholderPage title="404: Page Not Found" />} />
