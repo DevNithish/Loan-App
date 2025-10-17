@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/layout/Sidebar/Sidebar';
+import Navbar from './components/layout/Navbar/Navbar';
+import DashboardPage from './features/dashboard/DashboardPage';
+import LoanApplicationsPage from './features/loanApplications/LoanApplicationsPage';
+import './App.css'; // Styles for the main layout
+
+// A placeholder component for pages you haven't built yet
+const PlaceholderPage = ({ title }) => (
+  <div style={{ padding: '2rem' }}>
+    <h1>{title}</h1>
+    <p>This page is under construction.</p>
+  </div>
+);
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app-layout">
+        <Sidebar />
+        <div className="main-content">
+          <Navbar />
+          <main className="page-content">
+            <Routes>
+              {/* Default route to the Dashboard */}
+              <Route path="/" element={<DashboardPage />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/loan-applications" element={<LoanApplicationsPage />} />
+              
+              {/* Placeholder routes for other features */}
+              <Route path="/customers" element={<PlaceholderPage title="Customers" />} />
+              <Route path="/repayments" element={<PlaceholderPage title="Repayments" />} />
+              <Route path="/reports" element={<PlaceholderPage title="Reports & Analytics" />} />
+              <Route path="/settings" element={<PlaceholderPage title="Settings" />} />
+
+              {/* A catch-all route for non-existent pages */}
+              <Route path="*" element={<PlaceholderPage title="404: Page Not Found" />} />
+            </Routes>
+          </main>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
