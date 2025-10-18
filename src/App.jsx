@@ -13,6 +13,7 @@ import Navbar from "./components/layout/Navbar/Navbar";
 import DashboardPage from "./features/dashboard/DashboardPage";
 import LoanApplicationsPage from "./features/loanApplications/LoanApplicationsPage";
 import DisbursementTransactionsPage from "./Pagess/Disbursements";
+import RolesPermissionsPage from "./Pagess/RolesPermissionsPage";
 // import SettingsPage from './features/settings/SettingsPage';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -68,10 +69,7 @@ function App() {
                 path="/disbursements"
                 element={<DisbursementTransactionsPage />}
               />
-              <Route
-                path="/roles"
-                element={<PlaceholderPage title="Roles & Permissions" />}
-              />
+              <Route path="/roles" element={<RolesPermissionsPage />} />
               <Route
                 path="/reports"
                 element={<PlaceholderPage title="Reports & Analytics" />}
