@@ -1,67 +1,34 @@
-import React, { useState } from "react";
-import ReportsPage from "./components/Admin/reports/ReportsPage.jsx";
-import SettingsPage from "./components/Admin/settings/SettingsPage.jsx";
-import NotificationCenter from "./components/Admin/notifications/NotificationCente.jsx";
-import { ChartBarIcon, SettingsIcon } from "./components/Admin/icons.jsx";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./Components/Login/Login";
+import AdminDashboard from "./AdminDashboard/AdminDashboard";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
+import Signup from "./Components/Signup/Signup";
 
-const App = () => {
-  const [activePage, setActivePage] = useState("reports");
-
-  const renderPage = () => {
-    switch (activePage) {
-      case "reports":
-        return <ReportsPage />;
-      case "settings":
-        return <SettingsPage />;
-      default:
-        return (
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Welcome</h5>
-              <p className="card-text">Select a page from the sidebar.</p>
-            </div>
-          </div>
-        );
-    }
-  };
-
-  const NavLink = ({ page, icon, children }) => (
-    <button
-      onClick={() => setActivePage(page)}
-      className={`nav-link-button ${activePage === page ? "active" : ""}`}
-    >
-      {icon}
-      <span>{children}</span>
-    </button>
-  );
-
+function App() {
   return (
-    <div className="app-container">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <div className="sidebar-header">LoanPro</div>
-        <nav className="sidebar-nav">
-          <NavLink page="dashboard" icon={<ChartBarIcon />}>
-            Dashboard
-          </NavLink>
-          <NavLink page="reports" icon={<ChartBarIcon />}>
-            Reports & Analytics
-          </NavLink>
-          <NavLink page="settings" icon={<SettingsIcon />}>
-            Settings
-          </NavLink>
-        </nav>
-      </aside>
+    <Router>
+      <Routes>
+        {/* Public route */}
+        <Route path="/login" element={<Login />} />
 
-      {/* Main Content */}
-      <div className="main-content">
-        <header className="app-header">
-          <NotificationCenter />
-        </header>
-        <main className="content-wrapper">{renderPage()}</main>
-      </div>
-    </div>
+        {/* Protected Admin route */}
+        <Route
+          path="/admin/*"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Default redirect */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path='/signup' element={<Signup/>} />
+      </Routes>
+    </Router>
   );
-};
+}
+>>>>>>> 23357f2ce70679c3af486921b68d2f5872924840
 
 export default App;
