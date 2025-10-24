@@ -1,0 +1,65 @@
+.reports-page-header {
+  border-bottom: 1px solid var(--medium-gray);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem !important;
+}
+
+.reports-page-header h1 {
+  color: var(--text-color-primary);
+}
+
+/* Custom styling for the "Create Report" button */
+.btn-create-report {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(13, 110, 253, 0.2);
+}
+
+.btn-create-report:hover {
+  background-color: var(--dark-blue);
+  border-color: var(--dark-blue);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+}
+
+/* Styling for the detailed report view card */
+.report-detail-card {
+  background-color: var(--card-background);
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.report-detail-card .card-header {
+  background-color: var(--light-gray);
+  border-bottom: 1px solid var(--medium-gray);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.report-detail-card .card-body {
+  min-height: 400px; /* Give more space for charts */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark-gray);
+}
+
+/* Enhancing the scheduled reports table */
+.scheduled-reports-table .table {
+  border-radius: 0.5rem;
+  overflow: hidden; /* Ensures the border-radius is applied to the table corners */
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.scheduled-reports-table thead {
+  background-color: var(--light-gray);
+  font-weight: 600;
+  color: var(--dark-gray);
+  border-bottom: 2px solid var(--medium-gray);
+}
+
+.scheduled-reports-table .table-hover tbody tr:hover {
+  background-color: #f1f3f5;
+}
